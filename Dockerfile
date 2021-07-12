@@ -26,7 +26,8 @@ ENV PATH="$PATH:/opt/yarn/bin" BUNDLE_JOBS=4 RAILS_ENV=${rails_env} BUNDLE_WITHO
 COPY . /var/app
 WORKDIR /var/app
 
-RUN bundle install && bundle update --bundler && gem install bundler:1.16.3 && yarn && bundle exec rake assets:precompile \
+#bundle install
+RUN gem install bundler:1.16.3 && yarn && bundle exec rake assets:precompile \
  && rm -rf /usr/local/bundle/cache/*.gem \
  && find /usr/local/bundle/gems/ -name "*.c" -delete \
  && find /usr/local/bundle/gems/ -name "*.o" -delete \
